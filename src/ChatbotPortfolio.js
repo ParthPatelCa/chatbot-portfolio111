@@ -1,11 +1,14 @@
-// ChatbotPortfolio React component from your Canvas
-// Paste your full component code here if needed again after reset
-// For this demo, inserting a basic fallback placeholder
+import { useEffect } from "react";
+
 export default function ChatbotPortfolio() {
-  return (
-    <div>
-      <h1>Chatbot Portfolio</h1>
-      export default function ChatbotPortfolio() {
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://www.chatbase.co/embed.min.js";
+    script.id = "6FMJzrhRwTf2onZ-5qjhd";
+    script.setAttribute("domain", "www.chatbase.co");
+    document.body.appendChild(script);
+  }, []);
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-100 via-white to-gray-50 text-gray-900 px-6 py-12 space-y-24 font-sans">
 
@@ -64,34 +67,6 @@ export default function ChatbotPortfolio() {
       <section className="max-w-5xl mx-auto text-center">
         <h2 className="text-2xl font-semibold mb-4">Live Chatbot Preview</h2>
         <div id="chatbase-bot"></div>
-        <script dangerouslySetInnerHTML={{ __html: `
-          (function(){
-            if(!window.chatbase || window.chatbase("getState") !== "initialized") {
-              window.chatbase = (...args) => {
-                if (!window.chatbase.q) window.chatbase.q = [];
-                window.chatbase.q.push(args);
-              };
-              window.chatbase = new Proxy(window.chatbase, {
-                get(target, prop) {
-                  if (prop === "q") return target.q;
-                  return (...args) => target(prop, ...args);
-                }
-              });
-            }
-            const onLoad = function() {
-              const script = document.createElement("script");
-              script.src = "https://www.chatbase.co/embed.min.js";
-              script.id = "6FMJzrhRwTf2onZ-5qjhd";
-              script.domain = "www.chatbase.co";
-              document.body.appendChild(script);
-            };
-            if (document.readyState === "complete") {
-              onLoad();
-            } else {
-              window.addEventListener("load", onLoad);
-            }
-          })();
-        ` }} />
       </section>
 
       {/* Pricing */}
@@ -132,10 +107,6 @@ export default function ChatbotPortfolio() {
         <p className="text-lg">📞 Phone: <a href="tel:+17808077028" className="text-blue-600 underline">780-807-7028</a></p>
         <p className="text-lg">📅 <a href="#" className="text-blue-600 underline">Book a 15-min call</a></p>
       </section>
-    </div>
-  );
-}
-
     </div>
   );
 }
